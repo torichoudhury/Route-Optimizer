@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
-import { getRoute } from '../services/api';
+import React, { useState } from "react";
+import { getRoute } from "../api";
 
-function Form() {
-  const [pickup, setPickup] = useState('');
-  const [destination, setDestination] = useState('');
-  const [reason, setReason] = useState('');
+function Form({ onRouteCalculated }) {
+  const [pickup, setPickup] = useState("");
+  const [destination, setDestination] = useState("");
+  const [reason, setReason] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const route = await getRoute(pickup, destination, reason);
     console.log(route);
-    // You can also pass this to Map.js using context or props
+
+    // Pass the route data to parent or using context
+    if (onRouteCalculated) {
+      onRouteCalculated({
+        pickup,
+        destination,
+        routeType: reason,
+      });
+    }
   };
 
   return (
@@ -29,7 +37,11 @@ function Form() {
         onChange={(e) => setDestination(e.target.value)}
         required
       />
-      <select value={reason} onChange={(e) => setReason(e.target.value)} required>
+      <select
+        value={reason}
+        onChange={(e) => setReason(e.target.value)}
+        required
+      >
         <option value="">Select Reason</option>
         <option value="Emergency">Emergency (Shortest Time)</option>
         <option value="Drive">Leisure Drive (Longest Route)</option>

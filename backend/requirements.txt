@@ -1,0 +1,4 @@
+Flask
+flask-cors
+requests
+google-generativeai>=0.3.0
