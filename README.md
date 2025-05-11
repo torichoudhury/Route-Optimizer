@@ -1,4 +1,4 @@
-# Route Optimizer 🚀
+# Context-Aware Route Optimizer 🚀
 
 An AI-powered route optimization application designed to provide context-aware path suggestions using advanced pathfinding algorithms and Google Gemini AI. This project aims to simplify route planning based on specific user needs, such as emergencies, leisure drives, fuel efficiency, and time optimization.
 
