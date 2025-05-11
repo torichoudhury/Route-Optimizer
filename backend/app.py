@@ -11,7 +11,7 @@ app = Flask(__name__)
 CORS(app)  # Allow React frontend to connect
 
 # Set up the Gemini API - get API key from environment variable for security
-API_KEY = "" # Replace with your actual API key if not using env var
+API_KEY = " " # Replace with your actual API key if not using env var
 genai.configure(api_key=API_KEY)
 
 @app.route('/api/route', methods=['POST'])
